@@ -7,10 +7,9 @@
 type Range = [number, number];
 
 /**
- *
- * NOTE: Feel free to add any extra member variables/functions you like.
+ * This class is used to aggregate ranges.  A range consists of pair of integers which define a range,
+ * for example: [1, 5). This range includes integers: 1, 2, 3, and 4.
  */
-
 export class RangeList {
 
   ranges: Range[] = [];
@@ -20,7 +19,7 @@ export class RangeList {
    * @param {Range} range - Array of two integers that specify beginning and end of range.
    */
   add(range: Range) {
-    if (range[0] >= range[1]) {
+    if (!range || !Array.isArray(range) || range[0] >= range[1] || range.length != 2) {
       console.info(`Invalid range ignored: ${range}`);
     } else {
       let merged = false;
