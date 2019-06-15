@@ -66,11 +66,9 @@ export class RangeList {
           if (range[0] <= this.ranges[i][0]) { // range to delete starts at or before existing
             if (range[1] >= this.ranges[i][1]) { // complete overlap, delete range
               this.ranges.splice(i, 1);
-              continue;
+              continue; // don't increment i
             } else { // make existing range start at end of range to remove
               this.ranges[i][0] = range[1];
-              i++;
-              continue;
             }
           } else { // range to delete starts inside existing range
             let savedRange = this.ranges[i].map((x) => x); // deep copy so we can modify existing range object
