@@ -21,7 +21,7 @@ export class RangeList {
    */
   add(range: Range) {
     if (range[0] >= range[1]) {
-      console.error(`Invalid range ignored: ${range}`);
+      console.info(`Invalid range ignored: ${range}`);
     } else {
       let merged = false;
       for (let i = 0; i < this.ranges.length; i++) {
@@ -58,7 +58,7 @@ export class RangeList {
    */
   remove(range: Range) {
     if (range[0] >= range[1]) {
-      console.error(`Invalid range ignored: ${range}`);
+      console.info(`Invalid range ignored: ${range}`);
     } else {
       let i = 0;
       while (i < this.ranges.length) {
@@ -92,12 +92,6 @@ export class RangeList {
    * Prints out the list of ranges in the range list
    */
   print(): string {
-    return this.ranges.length === 0 ? "" : "["  + this.ranges.join(") [") + ")";
+    return this.ranges.length === 0 ? "" : "["  + this.ranges.map((r) => r[0] + ", " + r[1]).join(") [") + ")";
   }
 }
-
-let range = new RangeList();
-range.add([1,100]);
-range.remove([10, 20]);
-range.remove([15,1000]);
-console.log(range.print());
